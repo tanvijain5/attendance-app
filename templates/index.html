@@ -1,0 +1,11 @@
+<!doctype html>
+<html>
+<head><title>Attendance App</title><link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <h1>Attendance App</h1>
+  <p><a href="{{ url_for('teacher_login') }}">Teacher Login</a> |
+     <a href="{{ url_for('student_register') }}">Student Register</a> |
+     <a href="{{ url_for('student_login') }}">Student Login</a></p>
+</body>
+</html>

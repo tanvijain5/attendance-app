@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+<head><title>Student Dashboard</title><link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <h2>Welcome {{ student['name'] }}</h2>
+  <p><a href="{{ url_for('logout') }}">Logout</a></p>
+
+  <h3>Your Attendance Summary</h3>
+  <table border="1">
+    <tr><th>Subject</th><th>Attended</th><th>Total Sessions</th><th>Percent</th></tr>
+    {% for r in report %}
+      <tr>
+        <td>{{ r.subject }}</td>
+        <td>{{ r.attended }}</td>
+        <td>{{ r.total }}</td>
+        <td>{{ r.percent }}</td>
+      </tr>
+    {% endfor %}
+  </table>
+
+  <p>Scan the teacher's QR for a subject to mark attendance (or use "Mark Attendance" link if your browser supports camera).</p>
+</body>
+</html>
