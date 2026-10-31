@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Teacher Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css', v='20261027') }}">
+
+</head>
+<body>
+    <h2>Teacher Dashboard</h2>
+    <form method="POST">
+        <button type="submit">Generate QR Code</button>
+    </form>
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <p>{{ messages[0] }}</p>
+      {% endif %}
+    {% endwith %}
+    <br>
+    {% if qr_exists %}
+        <img src="/static/attendance_qr.png" alt="QR Code">
+    {% endif %}
+
+  <script src="{{ url_for('static', filename='script.js', v='20261027') }}" defer></script>
+</body>
+</html>

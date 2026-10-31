@@ -1,0 +1,13 @@
+<!doctype html>
+<html>
+<head><title>Confirm Attendance</title><link rel="stylesheet" href="{{ url_for('static', filename='style.css', v='20261027') }}">
+</head>
+<body>
+  <h3>Mark attendance for subject: {{ session['subject_name'] }}</h3>
+  <form method="post" action="{{ url_for('mark_attendance') }}">
+    <input type="hidden" name="token" value="{{ session['token'] }}">
+    <button type="submit">Confirm Mark Attendance</button>
+  </form>
+  <script src="{{ url_for('static', filename='script.js', v='20261027') }}" defer></script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Attendance</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css', v='20261027') }}">
+
+</head>
+<body>
+    <h2>Mark Attendance</h2>
+    <form method="POST">
+        <label>Name:</label>
+        <input type="text" name="name" required>
+        <button type="submit">Submit</button>
+    </form>
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <p>{{ messages[0] }}</p>
+      {% endif %}
+    {% endwith %}
+  <script src="{{ url_for('static', filename='script.js', v='20261027') }}" defer></script>
+</body>
+</html>

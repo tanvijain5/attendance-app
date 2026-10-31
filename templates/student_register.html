@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+<head><title>Student Register</title><link rel="stylesheet" href="{{ url_for('static', filename='style.css', v='20261027') }}">
+</head>
+<body>
+  <h2>Student Registration</h2>
+  <form method="post">
+    Name: <input name="name" required><br>
+    Roll: <input name="roll" required><br>
+    Password: <input type="password" name="password" required><br>
+    Number of subjects: <input id="count" type="number" name="subject_count" value="1" min="1" required>
+    <button type="button" onclick="renderInputs()">Set</button>
+    <div id="subjects"></div>
+    <br>
+    <button type="submit">Register</button>
+  </form>
+
+<script>
+function renderInputs(){
+  const n = parseInt(document.getElementById('count').value)||1;
+  const div = document.getElementById('subjects');
+  div.innerHTML = '';
+  for(let i=1;i<=n;i++){
+    const inp = document.createElement('input');
+    inp.name = 'subject_' + i;
+    inp.placeholder = 'Subject ' + i;
+    inp.required = true;
+    div.appendChild(inp);
+    div.appendChild(document.createElement('br'));
+  }
+}
+renderInputs();
+</script>
+  <script src="{{ url_for('static', filename='script.js', v='20261027') }}" defer></script>
+</body>
+</html>

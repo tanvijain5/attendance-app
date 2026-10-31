@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+<head><title>Teacher Dashboard</title><link rel="stylesheet" href="{{ url_for('static', filename='style.css', v='20261027') }}">
+</head>
+<body>
+  <h2>Teacher Dashboard</h2>
+  <p>Welcome, {{ session.get('teacher_name') or 'Teacher' }} | <a href="{{ url_for('logout') }}">Logout</a></p>
+
+  <h3>Create Session (Generate QR)</h3>
+  <form method="post" action="{{ url_for('teacher_create_session') }}">
+    Subject name: <input name="subject" required>
+    <button type="submit">Create & Generate QR</button>
+  </form>
+
+  <h3>Recent Sessions</h3>
+  <table border="1">
+    <tr><th>ID</th><th>Subject</th><th>Token (hidden)</th><th>Created at</th><th>Active</th><th>QR</th><th>Action</th></tr>
+    {% for s in sessions %}
+      <tr>
+        <td>{{ s['id'] }}</td>
+        <td>{{ s['subject_name'] }}</td>
+        <td>{{ s['token'][:8] }}...</td>
+        <td>{{ s['created_at'] }}</td>
+        <td>{{ 'Yes' if s['active'] else 'No' }}</td>
+        <td>
+          <img src="{{ url_for('static', filename='qr_' ~ s['id'] ~ '.png') }}" width="120" alt="QR">
+        </td>
+        <td>
+          {% if s['active'] %}
+            <form method="post" action="{{ url_for('teacher_end_session', session_id=s['id']) }}">
+              <button type="submit">End Session</button>
+            </form>
+          {% else %}
+            Ended
+          {% endif %}
+        </td>
+      </tr>
+    {% endfor %}
+  </table>
+
+  <h3>Attendance Table</h3>
+  <table border="1">
+    <tr>
+      <th>Student</th>
+      <th>Roll</th>
+      {% for subj in subjects %}
+        <th>{{ subj }}</th>
+      {% endfor %}
+    </tr>
+    {% for row in table %}
+      <tr>
+        <td>{{ row.student }}</td>
+        <td>{{ row.roll }}</td>
+        {% for subj in subjects %}
+          <td>
+            {{ row.by_subject[subj].attended }} / {{ row.by_subject[subj].total }} ({{ row.by_subject[subj].percent }})
+          </td>
+        {% endfor %}
+      </tr>
+    {% endfor %}
+  </table>
+  <script src="{{ url_for('static', filename='script.js', v='20261027') }}" defer></script>
+</body>
+</html>

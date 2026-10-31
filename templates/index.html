@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Attendance App | Smart Attendance Management</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css', v='20261027') }}">
+</head>
+<body>
+  <main class="landing">
+    <header class="topbar">
+      <a class="brand" href="{{ url_for('index') }}"><span class="brand-mark">A</span><span>AttendEase</span></a>
+      <nav class="top-links" aria-label="Main navigation">
+        <a href="{{ url_for('teacher_login') }}">Teacher Login</a>
+        <a href="{{ url_for('student_login') }}">Student Login</a>
+        <a class="nav-primary" href="{{ url_for('student_register') }}">Get Started</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div>
+        <span class="eyebrow">● Simple · Smart · Digital</span>
+        <h1>Attendance made <span>simple.</span></h1>
+        <p class="hero-copy">A streamlined QR-based attendance management system that helps teachers create attendance sessions and lets students mark attendance with a quick scan.</p>
+        <div class="hero-actions">
+          <a href="{{ url_for('teacher_login') }}">Continue as Teacher →</a>
+          <a class="secondary" href="{{ url_for('student_login') }}">Continue as Student</a>
+        </div>
+      </div>
+      <div class="hero-art" aria-label="Decorative QR code illustration">
+        <div class="qr-art" aria-hidden="true">
+          <span class="dark"></span><span class="dark"></span><span class="dark"></span><span></span><span class="brand-color"></span><span class="dark"></span><span class="dark"></span>
+          <span class="dark"></span><span></span><span class="dark"></span><span class="brand-color"></span><span></span><span></span><span class="dark"></span>
+          <span class="dark"></span><span class="dark"></span><span class="dark"></span><span></span><span class="dark"></span><span class="brand-color"></span><span class="dark"></span>
+          <span></span><span class="brand-color"></span><span></span><span class="dark"></span><span class="brand-color"></span><span></span><span></span>
+          <span class="brand-color"></span><span></span><span class="dark"></span><span></span><span class="dark"></span><span class="dark"></span><span class="brand-color"></span>
+          <span class="dark"></span><span></span><span class="brand-color"></span><span class="dark"></span><span></span><span class="brand-color"></span><span class="dark"></span>
+          <span class="dark"></span><span class="dark"></span><span></span><span class="brand-color"></span><span class="dark"></span><span class="dark"></span><span class="dark"></span>
+        </div>
+        <div class="float-chip">✓ Attendance tracked</div>
+      </div>
+    </section>
+
+    <section aria-labelledby="features-title">
+      <h2 class="section-heading" id="features-title">Everything you need to get started</h2>
+      <div class="feature-grid">
+        <article class="feature-card"><div class="feature-icon">QR</div><h3>QR-based sessions</h3><p>Teachers can create a session and generate a QR code for students to scan.</p></article>
+        <article class="feature-card"><div class="feature-icon">✓</div><h3>Easy attendance</h3><p>Students sign in and confirm attendance through the existing workflow.</p></article>
+        <article class="feature-card"><div class="feature-icon">▦</div><h3>Clear summaries</h3><p>Review attendance summaries and session records in organized tables.</p></article>
+      </div>
+    </section>
+    <footer class="footer">QR Code Attendance Management System · Academic Project</footer>
+  </main>
+  <script src="{{ url_for('static', filename='script.js', v='20261027') }}" defer></script>
+</body>
+</html>
