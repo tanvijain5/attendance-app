@@ -1,4 +1,4 @@
-# Attendance App — Professional UI Upgrade
+# Attendance App — Professional UI
 
 This package keeps the existing Flask routes and database logic and refreshes the frontend (HTML/CSS/JavaScript).
 
